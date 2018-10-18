@@ -22,7 +22,7 @@ class MainWindow extends Component {
           <h3>
             Hi, your ID is
             <input type="text" className="txt-clientId" value={clientId} />
-			 <button className="btn-action">Set</button>
+			 <button className="btn-action">Create</button>
           </h3>
           <h4>Get started by calling a friend below</h4>
         </div>
