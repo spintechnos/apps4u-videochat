@@ -49,6 +49,14 @@ span.green_class {
  display:none;
 }
 
+span.logo-right img {
+    width: 200px;
+    padding-top: 14px;
+}
+nav.navbar-header-right {
+    float: right;
+}
+
 @import "main-window";
 @import "call-window";
 @import "call-modal";
