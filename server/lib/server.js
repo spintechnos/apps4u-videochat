@@ -4,6 +4,9 @@ const io = require('socket.io');
 const haiku = require('./haiku');
 
 const app = express();
+app.get('/students', function (req, res) {
+    res.send('Get all Student Data');
+});
 const server = createServer(app);
 const userIds = {};
 const noop = () => {};
@@ -15,6 +18,7 @@ app.use('/', express.static(`${process.cwd()}/../client`));
  */
 function randomID(callback) {
   const id = haiku();
+  
   if (id in userIds) setTimeout(() => haiku(callback), 5);
   else callback(id);
 }
@@ -32,25 +36,39 @@ function sendTo(to, done, fail) {
     next();
   }
 }
+function setUserId(id){
+	console.log("----------------id actiave------------");
+	console.log(id);
+}
 
 /**
  * Initialize when a connection is made
  * @param {SocketIO.Socket} socket
  */
 function initSocket(socket) {
-  let id;
+  let id,userId;
   socket
-    .on('init', () => {
-      randomID((_id) => {
-        id = _id;
-        userIds[id] = socket;
-        socket.emit('init', { id });
-      });
+    .on('init', (data) => {
+		
+      /*randomID((_id) => {
+       // id = data.useId;
+       // userIds[id] = socket;
+       // socket.emit('init', { id });
+      });*/
+	 
     })
     .on('request', (data) => {
-      sendTo(data.to, to => to.emit('request', { from: id }));
+		sendTo(data.to, to => to.emit('request', { from: id }));
+    })
+	.on('setUserId', (data) => {
+		userId=data.DynamicId
+		  randomID((_id) => {
+		  id = userId;
+          userIds[id] = socket;
+		});
     })
     .on('call', (data) => {
+		
       sendTo(
         data.to,
         to => to.emit('call', { ...data, from: id }),
@@ -60,7 +78,7 @@ function initSocket(socket) {
     .on('end', (data) => {
       sendTo(data.to, to => to.emit('end'));
     })
-    .on('disconnect', () => {
+	.on('disconnect', () => {
       delete userIds[id];
       console.log(id, 'disconnected');
     });

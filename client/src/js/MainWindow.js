@@ -3,15 +3,26 @@ import PropTypes from 'proptypes';
 
 let friendID;
 
+
 class MainWindow extends Component {
   /**
    * Start the call with or without video
    * @param {Boolean} video
    */
+   
+ 
   callWithVideo(video) {
+	 
     const config = { audio: true };
     config.video = video;
     return () => this.props.startCall(true, friendID, config);
+  }
+  
+ 
+  UserId(userId) {
+	 
+	 return () => 
+	 this.props.setUserId(document.getElementsByClassName("txt-clientId")[0].value);
   }
   render() {
     const { clientId } = this.props;
@@ -21,16 +32,23 @@ class MainWindow extends Component {
         <div>
           <h3>
             Hi, your ID is
-            <input type="text" className="txt-clientId" value={clientId} />
-		 </h3>
-          <h4>Please share this with the person you want to chat with.</h4>
+            <input type="text"
+			className="txt-clientId"
+			 placeholder="Enter Your ID"
+			/>
+			<button
+              className="btn-action fa fa-plus"
+              onClick={this.UserId('rta')}
+            />
+          </h3>
+          <h4>Get started by calling a friend below</h4>
         </div>
         <div>
           <input
             type="text"
             className="txt-clientId"
             spellCheck={false}
-            placeholder="Your friend ID"
+            placeholder="Enter Your friend ID"
             onChange={event => friendID = event.target.value}
           />
           <div>
@@ -51,7 +69,8 @@ class MainWindow extends Component {
 
 MainWindow.propTypes = {
   clientId: PropTypes.string.isRequired,
-  startCall: PropTypes.func.isRequired
+  startCall: PropTypes.func.isRequired,
+  setUserId: PropTypes.func.isRequired
 };
 
 export default MainWindow;

@@ -21,6 +21,7 @@ class App extends Component {
     this.pc = {};
     this.config = null;
     this.startCallHandler = this.startCall.bind(this);
+	this.setCallHandler = this.setUserId.bind(this);
     this.endCallHandler = this.endCall.bind(this);
     this.rejectCallHandler = this.rejectCall.bind(this);
   }
@@ -28,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     socket
       .on('init', data => this.setState({ clientId: data.id }))
-      .on('request', data => this.setState({ callModal: 'active', callFrom: data.from }))
+      .on('request', data => this.setState({callModal: 'active', callFrom: data.from }))
       .on('call', (data) => {
         if (data.sdp) {
           this.pc.setRemoteDescription(data.sdp);
@@ -55,6 +56,9 @@ class App extends Component {
     socket.emit('end', { to: this.state.callFrom });
     this.setState({ callModal: '' });
   }
+   setUserId(user_id) {
+	    socket.emit('setUserId',{ DynamicId:user_id });
+  }
 
   endCall(isStarter) {
     if (_.isFunction(this.pc.stop)) this.pc.stop(isStarter);
@@ -73,7 +77,9 @@ class App extends Component {
         <MainWindow
           clientId={this.state.clientId}
           startCall={this.startCallHandler}
+		  setUserId={this.setCallHandler}
         />
+		
         <CallWindow
           status={this.state.callWindow}
           localSrc={this.state.localSrc}
