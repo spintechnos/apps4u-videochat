@@ -31,7 +31,7 @@ class MainWindow extends Component {
       <div className="container main-window">
         <div>
           <h3>
-            Hi, your ID is
+            Hi, Please create your ID,
             <input type="text"
 			className="txt-clientId"
 			 placeholder="Enter Your ID"
