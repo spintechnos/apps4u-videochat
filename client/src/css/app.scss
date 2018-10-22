@@ -41,6 +41,13 @@ body {
   border: none;
 }
 
+span.green_class {
+    color: green;
+    font-weight: 600;
+}
+.main-wrap{
+ display:none;
+}
 
 @import "main-window";
 @import "call-window";

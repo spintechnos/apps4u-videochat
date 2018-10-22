@@ -22,6 +22,8 @@ class MainWindow extends Component {
   UserId(userId) {
 	 
 	 return () => 
+	 document.getElementsByClassName("main-wrap")[0].style.display = "block";
+	
 	 this.props.setUserId(document.getElementsByClassName("txt-clientId")[0].value);
   }
   render() {
@@ -31,7 +33,8 @@ class MainWindow extends Component {
       <div className="container main-window">
         <div>
           <h3>
-            Hi, Please create your ID,
+            <span className="main-title-wrap">Hi, Please create your ID, </span>
+			
             <input type="text"
 			className="txt-clientId"
 			 placeholder="Enter Your ID"
@@ -40,8 +43,12 @@ class MainWindow extends Component {
               className="btn-action fa fa-plus"
               onClick={this.UserId('rta')}
             />
+			
           </h3>
-          <h4>Get started by calling a friend below</h4>
+		  <div className="main-wrap">
+		  <span className="green_class"> ID has been created.</span>
+          <h4 className="dynamic_text">Please give it to your friend to start the chatting. </h4>
+		  </div>
         </div>
         <div>
           <input
