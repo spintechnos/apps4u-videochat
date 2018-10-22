@@ -10,6 +10,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 html {
 	min-width: 400px;
 	background: url("https://apps4u-videochat.herokuapp.com/dist/assets/bg.png") top no-repeat;
+	background-size: cover;
 }
 
 body {
