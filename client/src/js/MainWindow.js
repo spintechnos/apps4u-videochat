@@ -22,8 +22,6 @@ class MainWindow extends Component {
   UserId(userId) {
 	 
 	 return () => 
-	 document.getElementsByClassName("main-wrap")[0].style.display = "block";
-	
 	 this.props.setUserId(document.getElementsByClassName("txt-clientId")[0].value);
   }
   render() {

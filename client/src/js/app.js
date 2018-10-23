@@ -57,6 +57,7 @@ class App extends Component {
     this.setState({ callModal: '' });
   }
    setUserId(user_id) {
+	    document.getElementsByClassName("main-wrap")[0].style.display = "block";
 	    socket.emit('setUserId',{ DynamicId:user_id });
   }
 
