@@ -30,6 +30,7 @@ class PeerConnection extends Emitter {
   console.log("aaaaaaa",isCaller,"=====",config);
     this.mediaDevice
       .on('stream', (stream) => {
+      console.log("bbbbbbbbbbbbbb");
         this.pc.addStream(stream);
         this.emit('localStream', stream);
         if (isCaller) socket.emit('request', { to: this.friendID });
