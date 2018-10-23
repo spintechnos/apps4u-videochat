@@ -41,6 +41,9 @@ body {
   border: none;
 }
 
+.navbar-brand {padding: 15px 9px;}
+
+
 span.green_class {
     color: green;
     font-weight: 600;
@@ -57,7 +60,10 @@ span.logo-right img {
 nav.navbar-header-right {
     float: right;
 }
-
+@media (min-width: 768px)
+.navbar-header {
+    float: left;width: 100%;
+}
 @import "main-window";
 @import "call-window";
 @import "call-modal";
