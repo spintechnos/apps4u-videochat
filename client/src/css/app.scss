@@ -7,7 +7,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "variables";
 @import "shared/base";
 
-html {height: auto;
+html {height: 100%;
 	min-width: 100%;
 	background: url("https://apps4u-videochat.herokuapp.com/dist/assets/bg.png") top no-repeat;
 	background-size: cover;
@@ -57,11 +57,24 @@ span.logo-right img {
     width: 150px;
     padding-top: 14px;
 }
+.navbar-brand {
+    padding: 15px 6px;
+}
+
 nav.navbar-header-right {
     float: right;
+	 padding: 0px 6px 0 0;
 }
+@media (min-width: 768px)
+{
 .navbar-header {
     float: left;width: 100%;
+}
+}
+@media screen and (max-width: 767px){
+.main-window {
+    padding-top: 80px;
+}
 }
 @import "main-window";
 @import "call-window";
