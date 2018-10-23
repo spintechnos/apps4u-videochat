@@ -68,6 +68,14 @@ nav.navbar-header-right {
 .main-window .txt-clientId {
     margin: 40px auto 0px 0px !important;
 }
+#root {
+
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    overflow: hidden;
+
+}
 @media (min-width: 768px)
 {
 .navbar-header {
