@@ -27,6 +27,7 @@ class PeerConnection extends Emitter {
    * @param {Object} config - configuration for the call {audio: boolean, video: boolean}
    */
   start(isCaller, config) {
+  console.log("aaaaaaa",isCaller,"=====",config);
     this.mediaDevice
       .on('stream', (stream) => {
         this.pc.addStream(stream);
