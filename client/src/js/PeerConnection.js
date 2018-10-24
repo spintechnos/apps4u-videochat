@@ -27,12 +27,9 @@ class PeerConnection extends Emitter {
    * @param {Object} config - configuration for the call {audio: boolean, video: boolean}
    */
   start(isCaller, config) {
-  console.log("aaaaaaa",isCaller,"=====",config);
-    this.mediaDevice
+  this.mediaDevice
       .on('stream', (stream) => {
-      console.log("bbbbbbbbbbbbbb");
-      console.log(this.pc); 
-        //this.pc.addStream(stream);
+      this.pc.addStream(stream);
         this.emit('localStream', stream);
         if (isCaller) socket.emit('request', { to: this.friendID });
         else this.createOffer();
