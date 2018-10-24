@@ -32,7 +32,7 @@ class PeerConnection extends Emitter {
       .on('stream', (stream) => {
       console.log("bbbbbbbbbbbbbb");
       console.log(this.pc); 
-        this.pc.addStream(stream);
+        //this.pc.addStream(stream);
         this.emit('localStream', stream);
         if (isCaller) socket.emit('request', { to: this.friendID });
         else this.createOffer();
